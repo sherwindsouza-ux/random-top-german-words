@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 import random
+import codecs
 
 print("""Please choose the number of the option you want and press ENTER:
 1- Top 2000 words (Wikipedia)
@@ -29,12 +30,17 @@ words_count = len(words_array)
 
 print("Press ENTER to print new words, or CTRL+C to exit...")
 
-while True:
-    c = raw_input()
-    if c == '':
-        i = random.randint(1, words_count)
-        print(words_array[i])
-    else:
-        break
+text = ""
+with codecs.open("additional.txt", "a+", "utf-8") as f:
+    while True:
+        c = raw_input()
+        if c == '':
+            i = random.randint(1, words_count)^M
+            print(words_array[i])
+            text = words_array[i]
+        elif c == 'quit':
+            break
+        else:
+            f.write("<item><word>" + text + "</word>\n" + "<misc>" + c.decode("utf-8") + "</misc>\n</item>\n")
 
 exit()
