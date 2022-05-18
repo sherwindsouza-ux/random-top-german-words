@@ -35,7 +35,7 @@ with codecs.open("additional.txt", "a+", "utf-8") as f:
     while True:
         c = raw_input()
         if c == '':
-            i = random.randint(1, words_count)^M
+            i = random.randint(1, words_count)
             print(words_array[i])
             text = words_array[i]
         elif c == 'quit':
